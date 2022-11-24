@@ -20,6 +20,6 @@ router.route('/:id').get(getShowGame);
 
 router.route('/:id/edit').get(getEditGame).post(validateFormGame, postEditGame);
 
-router.route('/:id/delete').post(validateFormGame, postDeleteGame);
+router.route('/:id/delete').post(postDeleteGame);
 
 export default router;

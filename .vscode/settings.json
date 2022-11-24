@@ -8,10 +8,10 @@
       "server": "localhost",
       "port": 3306,
       "driver": "MySQL",
-      "name": "localhost",
-      "database": "will-esports",
+      "name": "will-esports",
       "username": "root",
-      "password": "password"
+      "password": "password",
+      "database": "will-esports"
     }
   ]
 }
