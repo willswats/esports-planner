@@ -1,0 +1,29 @@
+<%- layout('layouts/boilerplate') %>
+
+<h1>Add game</h1>
+<form action="/games/add" method="post" onsubmit="return validateFormGame()">
+  <div class="form-group my-2">
+    <label for="input-name">Name:</label>
+    <input class="form-control my-2" id="input-name" type="text" name="name" />
+    <p class="text-danger" id="p-error-name"></p>
+    <label for="input-duration">Duration:</label>
+    <input
+      class="form-control my-2"
+      id="input-duration"
+      type="number"
+      name="duration"
+    />
+    <p class="text-danger" id="p-error-duration"></p>
+    <label for="input-team-size">Team size:</label>
+    <input
+      class="form-control my-2"
+      id="input-team-size"
+      type="number"
+      name="team_size"
+    />
+    <p class="text-danger" id="p-error-team-size"></p>
+  </div>
+  <button class="btn btn-success" type="submit">Add Game</button>
+</form>
+
+<script src="/scripts/validateFormGame.js"></script>

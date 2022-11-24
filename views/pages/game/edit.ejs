@@ -1,0 +1,45 @@
+<%- layout('layouts/boilerplate') %>
+
+<!-- prettier-ignore -->
+<% if (result.length > 0) { %>
+<form
+  action="/games/<%=result[0].game_id%>/edit"
+  method="post"
+  onsubmit="return validateFormGame()"
+>
+  <div class="form-group my-2">
+    <label for="input-name">Name:</label>
+    <input
+      class="form-control my-2"
+      id="input-name"
+      type="text"
+      name="name"
+      value="<%=result[0].name%>"
+    />
+    <p class="text-danger" id="p-error-name"></p>
+    <label for="input-duration">Duration:</label>
+    <input
+      class="form-control my-2"
+      id="input-duration"
+      type="number"
+      name="duration"
+      value="<%=result[0].duration%>"
+    />
+    <p class="text-danger" id="p-error-duration"></p>
+    <label for="input-team-size">Team size:</label>
+    <input
+      class="form-control my-2"
+      id="input-team-size"
+      type="number"
+      name="team_size"
+      value="<%=result[0].team_size%>"
+    />
+    <p class="text-danger" id="p-error-team-size"></p>
+  </div>
+  <button class="btn btn-success" type="submit">Edit Game</button>
+</form>
+<% } else { %>
+<h1>There is no country with an id of "<%=id%>"</h1>
+<% } %>
+
+<script src="/scripts/validateFormGame.js"></script>
