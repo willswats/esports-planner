@@ -90,7 +90,7 @@ export const getEditGame = (req, res) => {
         req.flash('error', 'Something went wrong');
       }
       res.render('pages/game/edit', {
-        title: result[0].country,
+        title: result[0].name,
         id,
         result,
       });

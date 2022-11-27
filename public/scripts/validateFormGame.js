@@ -6,49 +6,44 @@ const pErrorDuration = document.getElementById('p-error-duration');
 const pErrorTeamSize = document.getElementById('p-error-team-size');
 
 const validateFormGame = () => {
-  let valid = {
-    inputName: false,
-    inputDuration: false,
-    inputTeamSize: false,
-  };
+  const inputNameErrors = validateInputString('Name', inputName.value, 0, 100);
+  const inputDurationErrors = validateInputNumber(
+    'Duration',
+    inputDuration.value,
+    0,
+    1000
+  );
+  const inputTeamSizeErrors = validateInputNumber(
+    'Team size',
+    inputTeamSize.value,
+    0,
+    1000
+  );
 
-  if (isEmpty(inputName.value)) {
-    valid.inputName = false;
-    setFormError(
-      inputName,
-      pErrorName,
-      'Name must be greater than one character.'
-    );
+  const valid =
+    inputNameErrors.length <= 0 &&
+    inputDurationErrors.length <= 0 &&
+    inputTeamSizeErrors.length <= 0;
+
+  if (inputNameErrors.length > 0) {
+    setFormError(inputName, pErrorName, inputNameErrors[0].message);
   } else {
-    valid.inputName = true;
     removeFormError(inputName, pErrorName);
   }
 
-  if (isEmpty(inputDuration.value)) {
-    valid.inputDuration = false;
-    setFormError(
-      inputDuration,
-      pErrorDuration,
-      'Duration must be greater than one character.'
-    );
+  if (inputDurationErrors.length > 0) {
+    setFormError(inputDuration, pErrorDuration, inputDurationErrors[0].message);
   } else {
-    valid.inputDuration = true;
     removeFormError(inputDuration, pErrorDuration);
   }
 
-  if (isEmpty(inputTeamSize.value)) {
-    valid.inputTeamSize = false;
-    setFormError(
-      inputTeamSize,
-      pErrorTeamSize,
-      'Country must be greater than one character.'
-    );
+  if (inputTeamSizeErrors.length > 0) {
+    setFormError(inputTeamSize, pErrorTeamSize, inputTeamSizeErrors[0].message);
   } else {
-    valid.inputTeamSize = true;
     removeFormError(inputTeamSize, pErrorTeamSize);
   }
 
-  if (!valid.inputName || !valid.inputDuration || !valid.inputTeamSize) {
+  if (!valid) {
     return false;
   }
 

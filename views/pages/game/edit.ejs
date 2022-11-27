@@ -2,11 +2,7 @@
 
 <!-- prettier-ignore -->
 <% if (result.length > 0) { %>
-<form
-  action="/games/<%=result[0].game_id%>/edit"
-  method="post"
-  onsubmit="return validateFormGame()"
->
+<form action="/games/<%=result[0].game_id%>/edit" method="post" novalidate>
   <div class="form-group my-2">
     <label for="input-name">Name:</label>
     <input
@@ -41,5 +37,6 @@
 <% } else { %>
 <h1>There is no country with an id of "<%=id%>"</h1>
 <% } %>
-
+<!-- 
 <script src="/scripts/validateFormGame.js"></script>
+onsubmit="return validateFormGame()" -->

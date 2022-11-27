@@ -8,7 +8,7 @@ import {
   postEditGame,
   postDeleteGame,
 } from '../controllers/game.js';
-import { validateFormGame } from '../utils/validator.js';
+import { validateFormGame } from '../utils/validateFormGame.js';
 
 const router = express.Router();
 
