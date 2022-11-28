@@ -1,7 +1,12 @@
 <%- layout('layouts/boilerplate') %>
 
 <h1>Add game</h1>
-<form action="/games/add" method="post" novalidate>
+<form
+  action="/games/add"
+  method="post"
+  novalidate
+  onsubmit="return validateFormGame()"
+>
   <div class="form-group my-2">
     <label for="input-name">Name:</label>
     <input class="form-control my-2" id="input-name" type="text" name="name" />
@@ -26,5 +31,4 @@
   <button class="btn btn-success" type="submit">Add Game</button>
 </form>
 
-<!-- <script src="/scripts/validateFormGame.js"></script> -->
-<!-- onsubmit="return validateFormGame()" -->
+<script src="/scripts/validateFormGame.js"></script>

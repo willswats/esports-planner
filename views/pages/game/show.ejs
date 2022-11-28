@@ -1,7 +1,7 @@
 <%- layout('layouts/boilerplate') %>
 
 <!-- prettier-ignore -->
-<% if (result.length > 0) { %>
+<% if (result !== undefined && result.length > 0) { %>
 <h1><%= result[0].name %></h1>
 <ul>
   <li>Duration: <%=result[0].duration%></li>

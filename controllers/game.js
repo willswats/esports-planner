@@ -64,8 +64,9 @@ export const getShowGame = (req, res) => {
       if (error) {
         req.flash('error', 'Something went wrong');
       }
+
       res.render('pages/game/show', {
-        title: result[0].name,
+        title: result.length > 0 ? result[0].name : 'Error',
         id,
         result,
         success: req.flash('success'),
@@ -90,7 +91,7 @@ export const getEditGame = (req, res) => {
         req.flash('error', 'Something went wrong');
       }
       res.render('pages/game/edit', {
-        title: result[0].name,
+        title: result.length > 0 ? result[0].name : 'Error',
         id,
         result,
       });

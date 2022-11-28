@@ -10,7 +10,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <title><%= typeof title != 'undefined' ? title : 'Page Title' %></title>
+    <title><%=typeof title !== "undefined" ? title : 'Title' %></title>
   </head>
   <body class="bg-dark text-white">
     <%- include('../partials/nav') %>

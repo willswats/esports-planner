@@ -52,7 +52,9 @@ app.get('/', (req, res) => {
 });
 app.use('/games', gameRoutes);
 app.get('*', (req, res) => {
-  res.render('pages/404');
+  res.render('pages/404', {
+    title: '404 - Page not found',
+  });
 });
 
 // Start the server
