@@ -7,6 +7,7 @@ import session from 'express-session';
 import flash from 'connect-flash';
 
 import gameRoutes from './routes/game.js';
+import playerRoutes from './routes/player.js';
 
 const port = 3000;
 const app = express();
@@ -51,6 +52,7 @@ app.get('/', (req, res) => {
   res.render('pages/home');
 });
 app.use('/games', gameRoutes);
+app.use('/players', playerRoutes);
 app.get('*', (req, res) => {
   res.render('pages/404', {
     title: '404 - Page not found',

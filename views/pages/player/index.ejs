@@ -1,0 +1,13 @@
+<%- layout('layouts/boilerplate') %>
+
+<h1>Players</h1>
+<a class="btn btn-primary my-2" href="players/add">Add player</a>
+<ul>
+  <!-- prettier-ignore -->
+  <% if (result.length > 0) { %>
+  <% result.map((player) => { %>
+  <li><a href="players/<%=player.player_id%>"><%=player.name%></a></li>
+  <!-- prettier-ignore -->
+  <% }) %>
+  <% } %>
+</ul>

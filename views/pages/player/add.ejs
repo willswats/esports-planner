@@ -1,0 +1,43 @@
+<%- layout('layouts/boilerplate') %>
+
+<h1>Add player</h1>
+<form
+  action="/players/add"
+  method="post"
+  novalidate
+  onsubmit="return validateFormPlayer()"
+>
+  <div class="form-group my-2">
+    <label for="input-name">Name:</label>
+    <input class="form-control my-2" id="input-name" type="text" name="name" />
+    <p class="text-danger" id="p-error-name"></p>
+    <label for="input-email">Email:</label>
+    <input
+      class="form-control my-2"
+      id="input-email"
+      type="text"
+      name="email"
+    />
+    <p class="text-danger" id="p-error-email"></p>
+  </div>
+
+  <h2>Game Specialisations</h2>
+  <% result.map((game) => { %>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      name="game_id"
+      id="<%= game.game_id %>"
+      value="<%= game.game_id %>"
+    />
+    <label class="form-check-label" for="<%= game.game_id %>"
+      ><%= game.name %></label
+    >
+  </div>
+  <% }) %>
+
+  <button class="btn btn-success my-2" type="submit">Submit</button>
+</form>
+
+<script src="/scripts/validateFormPlayer.js"></script>

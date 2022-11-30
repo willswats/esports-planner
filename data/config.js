@@ -6,6 +6,7 @@ const config = {
   user: 'root',
   password: 'password',
   database: 'will-esports',
+  multipleStatements: true,
 };
 
 // Create a mySql connection pool

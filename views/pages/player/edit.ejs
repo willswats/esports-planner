@@ -1,0 +1,37 @@
+<%- layout('layouts/boilerplate') %>
+
+<!-- prettier-ignore -->
+<% if (result.length > 0) { %>
+<form
+  action="/players/<%=result[0].player_id%>/edit"
+  method="post"
+  novalidate
+  onsubmit="return validateFormPlayer()"
+>
+  <div class="form-group my-2">
+    <label for="input-name">Name:</label>
+    <input
+      class="form-control my-2"
+      id="input-name"
+      type="text"
+      name="name"
+      value="<%=result[0].name%>"
+    />
+    <p class="text-danger" id="p-error-name"></p>
+    <label for="input-email">Email:</label>
+    <input
+      class="form-control my-2"
+      id="input-email"
+      type="text"
+      name="email"
+      value="<%=result[0].email%>"
+    />
+    <p class="text-danger" id="p-error-email"></p>
+  </div>
+  <button class="btn btn-success my-2" type="submit">Submit</button>
+</form>
+<% } else { %>
+<h1>There is no player with an id of "<%=id%>"</h1>
+<% } %>
+
+<script src="/scripts/validateFormPlayer.js"></script>
