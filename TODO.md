@@ -14,11 +14,7 @@
 ## Medium Priority
 
 - [ ] Setup dotenv for `config.js`
-- [ ] Attempt switch to mariadb
 
 ## Low Priority
-
-- [ ] Test with original SQL
-- [ ] Dockerize application
 
 ## Done
