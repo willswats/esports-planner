@@ -38,7 +38,7 @@ You can now follow the [Docker](#docker) instructions.
 Create and run a MySQL server container:
 
 ```bash
-docker run -p 3306:3306 --name node-esports -e MYSQL_ROOT_PASSWORD=password -d mysql:latest
+docker run -p 3306:3306 --name node-esports -e MYSQL_ROOT_PASSWORD=password -d mysql:8.0.31
 ```
 
 `exec` into the container:
