@@ -1,4 +1,4 @@
-import express from 'express';
+import { Router } from 'express';
 import {
   getIndexGame,
   getAddGame,
@@ -10,7 +10,7 @@ import {
 } from '../controllers/game.js';
 import { validateFormGame } from '../utils/validateFormGame.js';
 
-const router = express.Router();
+const router = Router();
 
 router.route('/').get(getIndexGame);
 

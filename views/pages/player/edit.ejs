@@ -1,9 +1,9 @@
 <%- layout('layouts/boilerplate') %>
 
 <!-- prettier-ignore -->
-<% if (result.length > 0) { %>
+<% if (player !== undefined) { %>
 <form
-  action="/players/<%=result[0].player_id%>/edit"
+  action="/players/<%=player.player_id%>/edit"
   method="post"
   novalidate
   onsubmit="return validateFormPlayer()"
@@ -15,7 +15,7 @@
       id="input-name"
       type="text"
       name="name"
-      value="<%=result[0].name%>"
+      value="<%=player.name%>"
     />
     <p class="text-danger" id="p-error-name"></p>
     <label for="input-email">Email:</label>
@@ -24,7 +24,7 @@
       id="input-email"
       type="text"
       name="email"
-      value="<%=result[0].email%>"
+      value="<%=player.email%>"
     />
     <p class="text-danger" id="p-error-email"></p>
   </div>

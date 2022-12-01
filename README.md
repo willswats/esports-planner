@@ -10,9 +10,10 @@ An application for planning Esports, built with Node, Express, and MySQL.
 ## Setup
 
 1. Setup a local MySQL server.
-2. Add your configuration information into `config.js`.
-3. Run `npm install`.
-4. Run `npm start`.
+2. Setup the DB schema by executing the SQL in `will-esports.sql`.
+3. Add your configuration information into `config.js`.
+4. Run `npm install`.
+5. Run `npm start`.
 
 ### MySQL Server - Docker or Podman
 

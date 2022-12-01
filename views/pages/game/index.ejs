@@ -4,8 +4,8 @@
 <a class="btn btn-primary my-2" href="games/add">Add Game</a>
 <ul>
   <!-- prettier-ignore -->
-  <% if (result.length > 0) { %>
-  <% result.map((game) => { %>
+  <% if (games.length > 0) { %>
+  <% games.map((game) => { %>
   <li><a href="games/<%=game.game_id%>"><%=game.name%></a></li>
   <!-- prettier-ignore -->
   <% }) %>

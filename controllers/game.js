@@ -12,7 +12,7 @@ export const getIndexGame = (req, res) => {
       }
       res.render('pages/game/index', {
         title: 'Games',
-        result,
+        games: result,
         success: req.flash('success'),
         error: req.flash('error'),
       });
@@ -66,9 +66,9 @@ export const getShowGame = (req, res) => {
       }
 
       res.render('pages/game/show', {
-        title: result.length > 0 ? result[0].name : 'Error',
         id,
-        result,
+        title: result.length > 0 ? result[0].name : 'Error',
+        game: result[0],
         success: req.flash('success'),
         error: req.flash('error'),
       });
@@ -91,9 +91,9 @@ export const getEditGame = (req, res) => {
         req.flash('error', 'Something went wrong');
       }
       res.render('pages/game/edit', {
-        title: result.length > 0 ? result[0].name : 'Error',
         id,
-        result,
+        title: result.length > 0 ? result[0].name : 'Error',
+        game: result[0],
       });
     }
   );

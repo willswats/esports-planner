@@ -1,17 +1,17 @@
 <%- layout('layouts/boilerplate') %>
 
 <!-- prettier-ignore -->
-<% if (result.length > 0) { %>
-<h1><%= result[0].name %></h1>
+<% if (player !== undefined) { %>
+<h1><%= player.name %></h1>
 <ul>
-  <li>Email: <%=result[0].email%></li>
+  <li>Email: <%=player.email%></li>
 </ul>
 
 <div class="d-flex">
-  <a class="btn btn-success me-1" href="/players/<%=result[0].player_id%>/edit"
+  <a class="btn btn-success me-1" href="/players/<%=player.player_id%>/edit"
     >Edit</a
   >
-  <form action="/players/<%=result[0].player_id%>/delete" method="post">
+  <form action="/players/<%=player.player_id%>/delete" method="post">
     <button class="btn btn-danger">Delete</button>
   </form>
 </div>

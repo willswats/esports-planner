@@ -1,9 +1,9 @@
 <%- layout('layouts/boilerplate') %>
 
 <!-- prettier-ignore -->
-<% if (result.length > 0) { %>
+<% if (game !== undefined) { %>
 <form
-  action="/games/<%=result[0].game_id%>/edit"
+  action="/games/<%=game.game_id%>/edit
   method="post"
   novalidate
   onsubmit="return validateFormGame()"
@@ -15,7 +15,7 @@
       id="input-name"
       type="text"
       name="name"
-      value="<%=result[0].name%>"
+      value="<%=game.name%>"
     />
     <p class="text-danger" id="p-error-name"></p>
     <label for="input-duration">Duration:</label>
@@ -24,7 +24,7 @@
       id="input-duration"
       type="number"
       name="duration"
-      value="<%=result[0].duration%>"
+      value="<%=game.duration%>"
     />
     <p class="text-danger" id="p-error-duration"></p>
     <label for="input-team-size">Team size:</label>
@@ -33,7 +33,7 @@
       id="input-team-size"
       type="number"
       name="team_size"
-      value="<%=result[0].team_size%>"
+      value="<%=game.team_size%>"
     />
     <p class="text-danger" id="p-error-team-size"></p>
   </div>

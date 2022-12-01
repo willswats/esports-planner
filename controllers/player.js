@@ -12,7 +12,7 @@ export const getIndexPlayer = (req, res) => {
       }
       res.render('pages/player/index', {
         title: 'Players',
-        result,
+        players: result,
         success: req.flash('success'),
         error: req.flash('error'),
       });
@@ -30,10 +30,9 @@ export const getAddPlayer = (req, res) => {
       if (error) {
         req.flash('error', 'Something went wrong');
       }
-      console.log(result);
       res.render('pages/player/add', {
         title: 'Add Player',
-        result,
+        games: result,
       });
     }
   );
@@ -102,9 +101,9 @@ export const getShowPlayer = (req, res) => {
         req.flash('error', 'Something went wrong');
       }
       res.render('pages/player/show', {
-        title: result.length > 0 ? result[0].name : 'Error',
         id,
-        result,
+        title: result.length > 0 ? result[0].name : 'Error',
+        player: result[0],
         success: req.flash('success'),
         error: req.flash('error'),
       });
@@ -127,9 +126,9 @@ export const getEditPlayer = (req, res) => {
         req.flash('error', 'Something went wrong');
       }
       res.render('pages/player/edit', {
-        title: result.length > 0 ? result[0].name : 'Error',
         id,
-        result,
+        title: result.length > 0 ? result[0].name : 'Error',
+        player: result[0],
       });
     }
   );

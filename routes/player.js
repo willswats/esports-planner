@@ -1,4 +1,4 @@
-import express from 'express';
+import { Router } from 'express';
 import {
   getIndexPlayer,
   getAddPlayer,
@@ -10,7 +10,7 @@ import {
 } from '../controllers/player.js';
 import { validateFormPlayer } from '../utils/validateFormPlayer.js';
 
-const router = express.Router();
+const router = Router();
 
 router.route('/').get(getIndexPlayer);
 
