@@ -1,38 +1,24 @@
--- MySQL Workbench Forward Engineering
-
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema node-esports
 -- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema will-esports
--- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `node-esports` DEFAULT CHARACTER SET utf8mb4 ;
+USE `node-esports` ;
 
 -- -----------------------------------------------------
--- Schema will-esports
+-- Table `node-esports`.`country`
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `will-esports` DEFAULT CHARACTER SET utf8mb3 ;
-USE `will-esports` ;
-
--- -----------------------------------------------------
--- Table `will-esports`.`country`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `will-esports`.`country` (
+CREATE TABLE IF NOT EXISTS `node-esports`.`country` (
   `country_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NULL DEFAULT NULL,
   PRIMARY KEY (`country_id`),
   UNIQUE INDEX `country_id_UNIQUE` (`country_id` ASC) VISIBLE)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
-
+DEFAULT CHARACTER SET = utf8mb4;
 
 -- -----------------------------------------------------
--- Table `will-esports`.`city`
+-- Table `node-esports`.`city`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `will-esports`.`city` (
+CREATE TABLE IF NOT EXISTS `node-esports`.`city` (
   `city_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `country_id` INT NOT NULL,
@@ -42,15 +28,14 @@ CREATE TABLE IF NOT EXISTS `will-esports`.`city` (
   INDEX `country_id_idx` (`country_id` ASC) VISIBLE,
   CONSTRAINT `fk_country_id`
     FOREIGN KEY (`country_id`)
-    REFERENCES `will-esports`.`country` (`country_id`))
+    REFERENCES `node-esports`.`country` (`country_id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
-
+DEFAULT CHARACTER SET = utf8mb4;
 
 -- -----------------------------------------------------
--- Table `will-esports`.`game`
+-- Table `node-esports`.`game`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `will-esports`.`game` (
+CREATE TABLE IF NOT EXISTS `node-esports`.`game` (
   `game_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(200) NOT NULL,
   `duration` INT NOT NULL,
@@ -58,13 +43,12 @@ CREATE TABLE IF NOT EXISTS `will-esports`.`game` (
   PRIMARY KEY (`game_id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 55
-DEFAULT CHARACTER SET = utf8mb3;
-
+DEFAULT CHARACTER SET = utf8mb4;
 
 -- -----------------------------------------------------
--- Table `will-esports`.`championship`
+-- Table `node-esports`.`championship`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `will-esports`.`championship` (
+CREATE TABLE IF NOT EXISTS `node-esports`.`championship` (
   `championship_id` INT NOT NULL AUTO_INCREMENT,
   `game_id` INT NOT NULL,
   `name` VARCHAR(200) NOT NULL,
@@ -80,19 +64,18 @@ CREATE TABLE IF NOT EXISTS `will-esports`.`championship` (
   INDEX `city_id_idx` (`city_id` ASC) VISIBLE,
   CONSTRAINT `fk_championship_city`
     FOREIGN KEY (`city_id`)
-    REFERENCES `will-esports`.`city` (`city_id`),
+    REFERENCES `node-esports`.`city` (`city_id`),
   CONSTRAINT `fk_championship_game`
     FOREIGN KEY (`game_id`)
-    REFERENCES `will-esports`.`game` (`game_id`))
+    REFERENCES `node-esports`.`game` (`game_id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
-DEFAULT CHARACTER SET = utf8mb3;
-
+DEFAULT CHARACTER SET = utf8mb4;
 
 -- -----------------------------------------------------
--- Table `will-esports`.`team`
+-- Table `node-esports`.`team`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `will-esports`.`team` (
+CREATE TABLE IF NOT EXISTS `node-esports`.`team` (
   `team_id` INT NOT NULL AUTO_INCREMENT,
   `game_id` INT NOT NULL,
   `name` VARCHAR(200) NOT NULL,
@@ -101,17 +84,16 @@ CREATE TABLE IF NOT EXISTS `will-esports`.`team` (
   INDEX `game_id_idx` (`game_id` ASC) VISIBLE,
   CONSTRAINT `fk_team_game_id`
     FOREIGN KEY (`game_id`)
-    REFERENCES `will-esports`.`game` (`game_id`)
+    REFERENCES `node-esports`.`game` (`game_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 3
-DEFAULT CHARACTER SET = utf8mb3;
-
+DEFAULT CHARACTER SET = utf8mb4;
 
 -- -----------------------------------------------------
--- Table `will-esports`.`championshipentry`
+-- Table `node-esports`.`championshipentry`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `will-esports`.`championshipentry` (
+CREATE TABLE IF NOT EXISTS `node-esports`.`championshipentry` (
   `team_id` INT NOT NULL,
   `championship_id` INT NOT NULL,
   PRIMARY KEY (`team_id`, `championship_id`),
@@ -119,33 +101,31 @@ CREATE TABLE IF NOT EXISTS `will-esports`.`championshipentry` (
   INDEX `idchampionshipteam_idx` (`team_id` ASC) VISIBLE,
   CONSTRAINT `fk_championship_entry_id`
     FOREIGN KEY (`championship_id`)
-    REFERENCES `will-esports`.`championship` (`championship_id`)
+    REFERENCES `node-esports`.`championship` (`championship_id`)
     ON DELETE CASCADE,
   CONSTRAINT `fk_championship_entry_team_id`
     FOREIGN KEY (`team_id`)
-    REFERENCES `will-esports`.`team` (`team_id`)
+    REFERENCES `node-esports`.`team` (`team_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
-
+DEFAULT CHARACTER SET = utf8mb4;
 
 -- -----------------------------------------------------
--- Table `will-esports`.`player`
+-- Table `node-esports`.`player`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `will-esports`.`player` (
+CREATE TABLE IF NOT EXISTS `node-esports`.`player` (
   `player_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `email` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`player_id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 41
-DEFAULT CHARACTER SET = utf8mb3;
-
+DEFAULT CHARACTER SET = utf8mb4;
 
 -- -----------------------------------------------------
--- Table `will-esports`.`gamespecialisation`
+-- Table `node-esports`.`gamespecialisation`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `will-esports`.`gamespecialisation` (
+CREATE TABLE IF NOT EXISTS `node-esports`.`gamespecialisation` (
   `player_id` INT NOT NULL,
   `game_id` INT NOT NULL,
   PRIMARY KEY (`player_id`, `game_id`),
@@ -153,20 +133,19 @@ CREATE TABLE IF NOT EXISTS `will-esports`.`gamespecialisation` (
   INDEX `idgamespecialisation_idx` (`game_id` ASC) VISIBLE,
   CONSTRAINT `fk_game_specialisation_id`
     FOREIGN KEY (`game_id`)
-    REFERENCES `will-esports`.`game` (`game_id`)
+    REFERENCES `node-esports`.`game` (`game_id`)
     ON DELETE CASCADE,
   CONSTRAINT `fk_player_game_specialisation_id`
     FOREIGN KEY (`player_id`)
-    REFERENCES `will-esports`.`player` (`player_id`)
+    REFERENCES `node-esports`.`player` (`player_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
-
+DEFAULT CHARACTER SET = utf8mb4;
 
 -- -----------------------------------------------------
--- Table `will-esports`.`match`
+-- Table `node-esports`.`match`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `will-esports`.`match` (
+CREATE TABLE IF NOT EXISTS `node-esports`.`match` (
   `match_id` INT NOT NULL,
   `championship_id` INT NOT NULL,
   `matchdate` DATE NOT NULL,
@@ -175,16 +154,15 @@ CREATE TABLE IF NOT EXISTS `will-esports`.`match` (
   INDEX `idchampionship_idx` (`championship_id` ASC) VISIBLE,
   CONSTRAINT `fk_match_championship_id`
     FOREIGN KEY (`championship_id`)
-    REFERENCES `will-esports`.`championship` (`championship_id`)
+    REFERENCES `node-esports`.`championship` (`championship_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
-
+DEFAULT CHARACTER SET = utf8mb4;
 
 -- -----------------------------------------------------
--- Table `will-esports`.`matchcompetitor`
+-- Table `node-esports`.`matchcompetitor`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `will-esports`.`matchcompetitor` (
+CREATE TABLE IF NOT EXISTS `node-esports`.`matchcompetitor` (
   `match_competitor_id` INT NOT NULL AUTO_INCREMENT,
   `match_id` INT NOT NULL,
   `team_id` INT NOT NULL,
@@ -195,20 +173,19 @@ CREATE TABLE IF NOT EXISTS `will-esports`.`matchcompetitor` (
   INDEX `fk_competitor_match_id` (`match_id` ASC) VISIBLE,
   CONSTRAINT `fk_competitor_match_id`
     FOREIGN KEY (`match_id`)
-    REFERENCES `will-esports`.`match` (`match_id`)
+    REFERENCES `node-esports`.`match` (`match_id`)
     ON DELETE CASCADE,
   CONSTRAINT `fk_competitor_team_id`
     FOREIGN KEY (`team_id`)
-    REFERENCES `will-esports`.`team` (`team_id`)
+    REFERENCES `node-esports`.`team` (`team_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
-
+DEFAULT CHARACTER SET = utf8mb4;
 
 -- -----------------------------------------------------
--- Table `will-esports`.`teammember`
+-- Table `node-esports`.`teammember`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `will-esports`.`teammember` (
+CREATE TABLE IF NOT EXISTS `node-esports`.`teammember` (
   `player_id` INT NOT NULL,
   `team_id` INT NOT NULL,
   `active` TINYINT NOT NULL,
@@ -217,16 +194,11 @@ CREATE TABLE IF NOT EXISTS `will-esports`.`teammember` (
   INDEX `idteam_idx` (`team_id` ASC) VISIBLE,
   CONSTRAINT `fk_team_member_team_id`
     FOREIGN KEY (`team_id`)
-    REFERENCES `will-esports`.`team` (`team_id`)
+    REFERENCES `node-esports`.`team` (`team_id`)
     ON DELETE CASCADE,
   CONSTRAINT `fk_team_player_id`
     FOREIGN KEY (`player_id`)
-    REFERENCES `will-esports`.`player` (`player_id`)
+    REFERENCES `node-esports`.`player` (`player_id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+DEFAULT CHARACTER SET = utf8mb4;

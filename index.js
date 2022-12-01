@@ -49,7 +49,9 @@ app.set('views', path.join(path.dirname(__filename), 'views'));
 
 // Setup routes
 app.get('/', (req, res) => {
-  res.render('pages/home');
+  res.render('pages/home', {
+    title: 'Home',
+  });
 });
 app.use('/games', gameRoutes);
 app.use('/players', playerRoutes);

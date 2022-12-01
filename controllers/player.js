@@ -93,9 +93,14 @@ export const getShowPlayer = (req, res) => {
     `
     SELECT * 
     FROM player 
-    WHERE player_id = ?
+    WHERE player_id = ?;
+    SELECT *
+    FROM gamespecialisation
+    WHERE player_id =  ?;
+    SELECT *
+    FROM game
     `,
-    id,
+    [id, id],
     (error, result) => {
       if (error) {
         req.flash('error', 'Something went wrong');
@@ -103,7 +108,9 @@ export const getShowPlayer = (req, res) => {
       res.render('pages/player/show', {
         id,
         title: result.length > 0 ? result[0].name : 'Error',
-        player: result[0],
+        player: result[0][0],
+        gamespecialisations: result[1],
+        games: result[2],
         success: req.flash('success'),
         error: req.flash('error'),
       });
@@ -118,9 +125,14 @@ export const getEditPlayer = (req, res) => {
     `
     SELECT * 
     FROM player 
-    WHERE player_id = ?
+    WHERE player_id = ?;
+    SELECT *
+    FROM gamespecialisation
+    WHERE player_id =  ?;
+    SELECT *
+    FROM game
     `,
-    id,
+    [id, id],
     (error, result) => {
       if (error) {
         req.flash('error', 'Something went wrong');
@@ -128,7 +140,9 @@ export const getEditPlayer = (req, res) => {
       res.render('pages/player/edit', {
         id,
         title: result.length > 0 ? result[0].name : 'Error',
-        player: result[0],
+        player: result[0][0],
+        gamespecialisations: result[1],
+        games: result[2],
       });
     }
   );

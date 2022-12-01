@@ -28,6 +28,23 @@
     />
     <p class="text-danger" id="p-error-email"></p>
   </div>
+
+  <h2>Game Specialisations</h2>
+  <% if (gamespecialisations.length > 0 && games.length > 0) { %>
+  <!-- prettier-ignore -->
+  <ul>
+    <% for (let i = 0; i < gamespecialisations.length; i++)  { %>
+      <% for (let k= 0; k < games.length; k++) { %>
+        <% if (gamespecialisations[i].game_id === games[k].game_id)  { %>
+          <li><%= games[k].name %></li>
+        <% } %>
+      <% } %>
+    <% } %>
+  </ul>
+  <% } else { %>
+  <p><%=player.name %> has no Game specialisations</p>
+  <% } %>
+
   <button class="btn btn-success my-2" type="submit">Submit</button>
 </form>
 <% } else { %>

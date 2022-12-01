@@ -1,9 +1,24 @@
 # TODO
 
-- [ ] Setup dotenv for `config.js`
+## In Progress
+
+- [ ] Finish CRUD for gamespecialisation
 - [ ] Finish README
-- [ ] Dockerize application
-- [ ] Finish nav
-- [ ] Switch to mariadb
+
+## High Priority
+
+- [ ] Complete views, routes and controllers for teams
 - [ ] Ensure session is setup properly
-- [ ] Complete view, routes, controllers for teams
+- [ ] Test without database connection
+
+## Medium Priority
+
+- [ ] Setup dotenv for `config.js`
+- [ ] Attempt switch to mariadb
+
+## Low Priority
+
+- [ ] Test with original SQL
+- [ ] Dockerize application
+
+## Done

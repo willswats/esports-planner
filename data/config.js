@@ -5,7 +5,7 @@ const config = {
   host: 'localhost',
   user: 'root',
   password: 'password',
-  database: 'will-esports',
+  database: 'node-esports',
   multipleStatements: true,
 };
 
