@@ -16,5 +16,3 @@
 - [ ] Setup dotenv for `config.js`
 
 ## Low Priority
-
-## Done
