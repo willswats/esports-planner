@@ -14,5 +14,6 @@
 - [ ] Setup dotenv for `config.js`
 - [ ] Ensure session is setup properly
 - [ ] Test without database connection
+- [ ] Refactor parts of player controller
 
 ## Low Priority
