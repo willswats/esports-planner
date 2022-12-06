@@ -3,16 +3,16 @@
 ## In Progress
 
 - [ ] Finish CRUD for gamespecialisation
-- [ ] Finish README
 
 ## High Priority
 
+- [ ] Style with tailwind css
 - [ ] Complete views, routes and controllers for teams
-- [ ] Ensure session is setup properly
-- [ ] Test without database connection
 
 ## Medium Priority
 
 - [ ] Setup dotenv for `config.js`
+- [ ] Ensure session is setup properly
+- [ ] Test without database connection
 
 ## Low Priority

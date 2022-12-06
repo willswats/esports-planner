@@ -1,7 +1,7 @@
 <%- layout('layouts/boilerplate') %>
 <h1>Error</h1>
 <!-- prettier-ignore -->
-<% if (typeof errors !== 'undefined') { %>
+<% if (errors !== undefined) { %>
 <% errors.forEach((error) => { %>
 <div class="alert alert-danger" role="alert"><%= error.message %></div>
 <!-- prettier-ignore -->

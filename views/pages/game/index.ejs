@@ -4,7 +4,7 @@
 <a class="btn btn-primary my-2" href="games/add">Add Game</a>
 <ul>
   <!-- prettier-ignore -->
-  <% if (games.length > 0) { %>
+  <% if (games !== undefined) { %>
   <% games.map((game) => { %>
   <li><a href="games/<%=game.game_id%>"><%=game.name%></a></li>
   <!-- prettier-ignore -->

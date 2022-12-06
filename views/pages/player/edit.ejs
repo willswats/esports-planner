@@ -30,19 +30,42 @@
   </div>
 
   <h2>Game Specialisations</h2>
-  <% if (gamespecialisations.length > 0 && games.length > 0) { %>
+
+  <% if (games !== undefined) { %>
   <!-- prettier-ignore -->
-  <ul>
-    <% for (let i = 0; i < gamespecialisations.length; i++)  { %>
-      <% for (let k= 0; k < games.length; k++) { %>
-        <% if (gamespecialisations[i].game_id === games[k].game_id)  { %>
-          <li><%= games[k].name %></li>
+  <div class="d-flex flex-column">
+      <% for (let i = 0; i < games.length; i++)  { %>
+        <% let addChecked = false; %>
+
+        <% if (gamespecialisations !== undefined) { %> 
+          <% for (let k = 0; k < gamespecialisations.length; k++) { %>
+            <% if (games[i].game_id === gamespecialisations[k].game_id) { %> 
+              <% addChecked = true; %>
+            <% } %>
+          <% } %>
         <% } %>
-      <% } %>
-    <% } %>
-  </ul>
+
+        <div class="d-flex flex-row">
+          <input 
+            class="me-2" 
+            type="checkbox"
+            name="game_id"
+            id="<%= games[i].game_id %>" 
+            value="<%= games[i].game_id %>"
+            <% if (addChecked) { %>
+              checked 
+            <% addChecked = false; %>
+            <% } %>
+          >
+          <label for="<%= games[i].game_id %>"><%= games[i].name %></label>   
+      </div>
+  <% } %> 
+  </div>
   <% } else { %>
-  <p><%=player.name %> has no Game specialisations</p>
+  <p>
+    There are currently no games, add them on the
+    <a href="/games">games</a> page.
+  </p>
   <% } %>
 
   <button class="btn btn-success my-2" type="submit">Submit</button>

@@ -37,6 +37,7 @@ export const getAddPlayer = (req, res) => {
     }
   );
 };
+
 export const postAddPlayer = (req, res) => {
   const { name, email } = req.body;
   let { game_id } = req.body;
@@ -67,7 +68,7 @@ export const postAddPlayer = (req, res) => {
 
         pool.query(
           `
-          INSERT INTO 
+          INSERT INTO
           gamespecialisation (player_id, game_id) 
           VALUES ?
           `,
@@ -107,7 +108,7 @@ export const getShowPlayer = (req, res) => {
       }
       res.render('pages/player/show', {
         id,
-        title: result.length > 0 ? result[0].name : 'Error',
+        title: result !== undefined ? result[0].name : 'Error',
         player: result[0][0],
         gamespecialisations: result[1],
         games: result[2],
@@ -151,23 +152,63 @@ export const getEditPlayer = (req, res) => {
 export const postEditPlayer = (req, res) => {
   const { id } = req.params;
   const { name, email } = req.body;
+  let { game_id } = req.body;
 
-  pool.query(
-    `
+  let gameIdsInsert = [];
+
+  // If game_id is not an array, insert it's value into an array
+  if (typeof game_id !== 'object') {
+    game_id = [game_id];
+  }
+
+  for (let i = 0; i < game_id.length; i++) {
+    gameIdsInsert.push([id, game_id[i]]);
+  }
+
+  if (game_id[0] !== undefined) {
+    pool.query(
+      `
     UPDATE player 
     SET ? 
-    WHERE player_id = ?
+    WHERE player_id = ?;
+    DELETE FROM gamespecialisation 
+    WHERE player_id = ?;
+    INSERT INTO
+    gamespecialisation (player_id, game_id) 
+    VALUES ?;
   `,
-    [{ name, email }, id],
-    (error) => {
-      if (error) {
-        req.flash('error', 'Something went wrong');
-      } else {
-        req.flash('success', 'Edited player');
+      [{ name, email }, id, id, gameIdsInsert],
+      (error) => {
+        if (error) {
+          console.log(error);
+          req.flash('error', 'Something went wrong');
+        } else {
+          req.flash('success', 'Edited player');
+        }
+        res.redirect(`/players/${id}`);
       }
-      res.redirect(`/players/${id}`);
-    }
-  );
+    );
+  } else {
+    pool.query(
+      `
+    UPDATE player 
+    SET ? 
+    WHERE player_id = ?;
+    DELETE FROM gamespecialisation 
+    WHERE player_id = ?;
+  `,
+      [{ name, email }, id, id],
+      (error) => {
+        if (error) {
+          console.log(error);
+          req.flash('error', 'Something went wrong');
+        } else {
+          req.flash('success', 'Edited player');
+        }
+        res.redirect(`/players/${id}`);
+      }
+    );
+  }
 };
 
 export const postDeletePlayer = (req, res) => {
