@@ -1,52 +1,51 @@
 <%- layout('layouts/boilerplate') %>
 
-<h1>Add player</h1>
-<form
-  action="/players/add"
-  method="post"
-  novalidate
-  onsubmit="return validateFormPlayer()"
->
-  <div class="form-group my-2">
-    <label for="input-name">Name:</label>
-    <input class="form-control my-2" id="input-name" type="text" name="name" />
-    <p class="text-danger" id="p-error-name"></p>
-    <label for="input-email">Email:</label>
-    <input
-      class="form-control my-2"
-      id="input-email"
-      type="text"
-      name="email"
-    />
-    <p class="text-danger" id="p-error-email"></p>
-  </div>
+<form action="/players/add" method="post" novalidate onsubmit="return validateFormPlayer()">
+  <div class="card bg-secondary text-white mb-2" style="width: 100%">
+    <div class="card-body">
+      <h1 class="card-title">Add player</h1>
+    </div>
 
-  <h2>Game Specialisations</h2>
-  <!-- prettier-ignore -->
-  <% if (games !== undefined) { %>
-  <% games.map((game) => { %>
-  <div class="form-check">
-    <input
-      class="form-check-input"
-      type="checkbox"
-      name="game_id"
-      id="<%= game.game_id %>"
-      value="<%= game.game_id %>"
-    />
-    <label class="form-check-label" for="<%= game.game_id %>"
-      ><%= game.name %></label
-    >
-  </div>
-  <!-- prettier-ignore -->
-  <% }) %>
-  <% } else { %>
-  <p>
-    There are currently no games, add them on the
-    <a href="/games">games</a> page.
-  </p>
-  <% } %>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item bg-secondary text-white">
+        <label for="input-name">Name:</label>
+        <input class="form-control my-2" id="input-name" type="text" name="name" />
+        <p class="text-danger" id="p-error-name"></p>
+      </li>
 
-  <button class="btn btn-success my-2" type="submit">Submit</button>
+      <li class="list-group-item bg-secondary text-white">
+        <label for="input-email">Email:</label>
+        <input class="form-control my-2" id="input-email" type="text" name="email" />
+        <p class="text-danger" id="p-error-email"></p>
+      </li>
+    </ul>
+
+    <div class="card-body">
+      <h5 class="card-title">Game Specialisations</h5>
+    </div>
+
+    <% if (games.length > 0) { %>
+    <div class="list-group list-group-flush">
+      <% games.map((game) => { %>
+      <label class="list-group-item d-flex gap-2 bg-secondary text-white" for="<%= game.game_id %>">
+        <input class="form-check-input flex-shrink-0" type="checkbox" name="game_id" id="<%= game.game_id %>" value="<%= game.game_id %>" />
+        <span> <%= game.name %> </span>
+      </label>
+      <% }) %>
+    </div>
+    <% } else { %>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item bg-secondary text-white">
+        There are currently no games, add them on the
+        <a href="/games">games</a> page.
+      </li>
+    </ul>
+    <% } %>
+
+    <div class="card-body d-flex">
+      <button class="btn btn-success my-2" type="submit">Submit</button>
+    </div>
+  </div>
 </form>
 
 <script src="/scripts/validateFormPlayer.js"></script>

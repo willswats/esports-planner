@@ -2,43 +2,34 @@
 
 <!-- prettier-ignore -->
 <% if (game !== undefined) { %>
-<form
-  action="/games/<%=game.game_id%>/edit"
-  method="post"
-  novalidate
-  onsubmit="return validateFormGame()"
->
-  <div class="form-group my-2">
-    <label for="input-name">Name:</label>
-    <input
-      class="form-control my-2"
-      id="input-name"
-      type="text"
-      name="name"
-      value="<%=game.name%>"
-    />
-    <p class="text-danger" id="p-error-name"></p>
-    <label for="input-duration">Duration:</label>
-    <input
-      class="form-control my-2"
-      id="input-duration"
-      type="number"
-      name="duration"
-      value="<%=game.duration%>"
-    />
-    <p class="text-danger" id="p-error-duration"></p>
-    <label for="input-team-size">Team size:</label>
-    <input
-      class="form-control my-2"
-      id="input-team-size"
-      type="number"
-      name="team_size"
-      value="<%=game.team_size%>"
-    />
-    <p class="text-danger" id="p-error-team-size"></p>
+
+<form action="/games/<%=game.game_id%>/edit" method="post" novalidate onsubmit="return validateFormGame()">
+  <div class="card bg-secondary text-white" style="width: 100%">
+    <div class="card-body">
+      <h5 class="card-title">
+        <label for="input-name">Name:</label>
+        <input class="form-control my-2" id="input-name" type="text" name="name" value="<%=game.name%>" />
+        <p class="text-danger" id="p-error-name"></p>
+      </h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item bg-secondary text-white">
+        <label for="input-duration">Duration:</label>
+        <input class="form-control my-2" id="input-duration" type="number" name="duration" value="<%=game.duration%>" />
+        <p class="text-danger" id="p-error-duration"></p>
+      </li>
+      <li class="list-group-item bg-secondary text-white">
+        <label for="input-team-size">Team size:</label>
+        <input class="form-control my-2" id="input-team-size" type="number" name="team_size" value="<%=game.team_size%>" />
+        <p class="text-danger" id="p-error-team-size"></p>
+      </li>
+    </ul>
+    <div class="card-body d-flex">
+      <button class="btn btn-success my-2" type="submit">Submit</button>
+    </div>
   </div>
-  <button class="btn btn-success my-2" type="submit">Submit</button>
 </form>
+
 <% } else { %>
 <h1>There is no game with an id of "<%=id%>"</h1>
 <% } %>

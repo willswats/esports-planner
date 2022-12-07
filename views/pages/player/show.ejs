@@ -1,36 +1,47 @@
 <%- layout('layouts/boilerplate') %>
 
-<!-- prettier-ignore -->
 <% if (player !== undefined) { %>
-<h1><%= player.name %></h1>
-<ul>
-  <li>Email: <%=player.email%></li>
-</ul>
+<div class="card bg-secondary text-white mb-2" style="width: 100%">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item bg-secondary text-white">
+      <p>Name:</p>
+      <p class="list-group-item text-white bg-secondary my-1 rounded">
+        <%= player.name %>
+      </p>
+    </li>
 
-<h2>Game Specialisations</h2>
-<% if (gamespecialisations.length > 0 && games.length > 0) { %>
-<!-- prettier-ignore -->
-<ul>
-  <% for (let i = 0; i < gamespecialisations.length; i++)  { %>
-    <% for (let k= 0; k < games.length; k++) { %>
-      <% if (gamespecialisations[i].game_id === games[k].game_id)  { %>
-        <li><%= games[k].name %></li>
-      <% } %>
-    <% } %>
-  <% } %>
-</ul>
-<% } else { %>
-<p><%=player.name %> has no Game specialisations</p>
-<% } %>
+    <li class="list-group-item bg-secondary text-white">
+      <p>Email:</p>
+      <p class="list-group-item text-white bg-secondary my-1 rounded">
+        <%=player.email%>
+      </p>
+    </li>
 
-<div class="d-flex">
-  <a class="btn btn-success me-1" href="/players/<%=player.player_id%>/edit"
-    >Edit</a
-  >
-  <form action="/players/<%=player.player_id%>/delete" method="post">
-    <button class="btn btn-danger">Delete</button>
-  </form>
+    <ul class="list-group list-group-flush">
+      <ul class="list-group-item bg-secondary text-white">
+        <p>Game Specialisations:</p>
+        <% if (gamespecialisations.length > 0 && games.length > 0) { %>
+        <% for (let i = 0; i < games.length; i++)  { %>
+        <% for (let k = 0; k < gamespecialisations.length; k++) { %>
+        <% if (games[i].game_id === gamespecialisations[k].game_id) { %>
+        <li class="list-group-item bg-secondary text-white"><%= games[i].name %></li>
+        <% } %>
+        <% } %>
+        <% } %>
+        <% } else { %>
+        <li class="list-group-item bg-secondary text-white"><%=player.name %> does not have any specialisations.</p>
+          <% } %>
+      </ul>
+    </ul>
+  </ul>
+  <div class="card-body d-flex">
+    <a class="btn btn-success me-1" href="/players/<%=player.player_id%>/edit">Edit</a>
+    <form action="/players/<%=player.player_id%>/delete" method="post">
+      <button class="btn btn-danger">Delete</button>
+    </form>
+  </div>
 </div>
+
 <% } else { %>
 <h1>There is no player with an id of "<%=id%>"</h1>
 <% } %>

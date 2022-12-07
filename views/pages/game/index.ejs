@@ -1,13 +1,17 @@
 <%- layout('layouts/boilerplate') %>
 
-<h1>Games</h1>
-<a class="btn btn-primary my-2" href="games/add">Add Game</a>
-<ul>
-  <!-- prettier-ignore -->
+<div class="card bg-secondary text-white" style="width: 100%">
+  <div class="card-body">
+    <h1 class="card-title">Games</h1>
+    <a class="btn btn-primary my-2" href="games/add">Add Game</a>
+  </div>
   <% if (games !== undefined) { %>
-  <% games.map((game) => { %>
-  <li><a href="games/<%=game.game_id%>"><%=game.name%></a></li>
-  <!-- prettier-ignore -->
-  <% }) %>
+  <ul class="list-group list-group-flush">
+    <% games.map((game) => { %>
+    <li class="list-group-item bg-secondary text-white">
+      <a href="games/<%=game.game_id%>" class="list-group-item bg-secondary text-white rounded my-1"><%=game.name%></a>
+    </li>
+    <% }) %>
+  </ul>
   <% } %>
-</ul>
+</div>
