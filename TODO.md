@@ -2,12 +2,12 @@
 
 ## In Progress
 
-- [ ] Finish styling
+## High Priority
+
+- [ ] Move style tag into css file
 - [ ] Refactor controllers
 - [ ] Ensure session is setup properly
 - [ ] Test without database connection
-
-## High Priority
 
 ## Medium Priority
 

@@ -19,7 +19,7 @@
 
     <ul class="list-group list-group-flush">
       <ul class="list-group-item bg-secondary text-white">
-        <p>Game Specialisations:</p>
+        <p>Game specialisations:</p>
         <% if (gamespecialisations.length > 0 && games.length > 0) { %>
         <% for (let i = 0; i < games.length; i++)  { %>
         <% for (let k = 0; k < gamespecialisations.length; k++) { %>
@@ -29,8 +29,8 @@
         <% } %>
         <% } %>
         <% } else { %>
-        <li class="list-group-item bg-secondary text-white"><%=player.name %> does not have any specialisations.</p>
-          <% } %>
+        <li class="list-group-item bg-secondary text-white"><%=player.name %> does not have any specialisations.</li>
+        <% } %>
       </ul>
     </ul>
   </ul>
@@ -43,5 +43,11 @@
 </div>
 
 <% } else { %>
-<h1>There is no player with an id of "<%=id%>"</h1>
+<div class="card bg-secondary text-white mb-2" style="width: 100%">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item bg-secondary text-white">
+      <p>There is no player with an id of "<%=id%>"</p>
+    </li>
+  </ul>
+</div>
 <% } %>
