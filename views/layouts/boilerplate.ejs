@@ -9,16 +9,21 @@
   <style>
     input {
       color: #fff !important;
-      background-color: #5f666d !important;
-      border: 1px solid #5f666d !important;
+      background-color: #5d626b !important;
+      border: 1px solid #51565e !important;
     }
 
-    .list-group-item-action {
+    input[type=checkbox] {
+      cursor: pointer;
+    }
+
+    .list-group-item .list-group-item {
+      background-color: #5d626b !important;
       transition: background-color 0.1s !important;
     }
 
-    .list-group-item-action:hover {
-      background-color: #5f666d !important;
+    .list-group-item a:hover {
+      background-color: #51565e !important;
     }
   </style>
   <title><%=typeof title !== "undefined" ? title : 'Title' %></title>

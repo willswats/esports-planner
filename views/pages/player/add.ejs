@@ -1,7 +1,7 @@
 <%- layout('layouts/boilerplate') %>
 
 <form action="/players/add" method="post" novalidate onsubmit="return validateFormPlayer()">
-  <div class="card bg-secondary text-white mb-2" style="width: 100%">
+  <div class="card bg-secondary" style="width: 100%">
     <div class="card-body">
       <h1 class="card-title">Add player</h1>
     </div>
@@ -20,8 +20,7 @@
       </li>
     </ul>
 
-
-    <ul class="list-group list-group-flush">
+    <div class="list-group list-group-flush">
       <ul class="list-group-item bg-secondary text-white">
         <p>Game specialisations:</p>
         <% if (games.length > 0) { %>
@@ -38,7 +37,7 @@
         </li>
         <% } %>
       </ul>
-    </ul>
+    </div>
 
     <div class="card-body d-flex">
       <button class="btn btn-success my-2" type="submit">Submit</button>

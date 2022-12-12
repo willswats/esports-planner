@@ -4,7 +4,7 @@
 <% if (game !== undefined) { %>
 
 <form action="/games/<%=game.game_id%>/edit" method="post" novalidate onsubmit="return validateFormGame()">
-  <div class="card bg-secondary text-white" style="width: 100%">
+  <div class="card bg-secondary" style="width: 100%">
     <ul class="list-group list-group-flush">
       <li class="list-group-item bg-secondary text-white">
         <label for="input-name">Name:</label>
@@ -20,7 +20,7 @@
 
       <li class="list-group-item bg-secondary text-white">
         <label for="input-team-size">Team size:</label>
-        <input class="form-control my-2" id="input-team-size" type="number" name="team_size" value="<%=game.team_size%>" />
+        <input class="form-control" id="input-team-size" type="number" name="team_size" value="<%=game.team_size%>" />
         <p class="text-danger" id="p-error-team-size"></p>
       </li>
     </ul>
@@ -30,10 +30,13 @@
   </div>
 </form>
 <% } else { %>
-<div class="card bg-secondary text-white mb-2" style="width: 100%">
+<div class="card bg-secondary" style="width: 100%">
+  <div class="card-body">
+    <h1>Error</h1>
+  </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item bg-secondary text-white">
-      <p>There is no player with an id of "<%=id%>"</p>
+      <p class="list-group-item bg-secondary text-white my-1 rounded">There is no game with an id of "<%=id%>"</p>
     </li>
   </ul>
 </div>

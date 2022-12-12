@@ -8,8 +8,8 @@
   <% if (players !== undefined) { %>
   <ul class="list-group list-group-flush">
     <% players.map((player) => { %>
-    <li class="list-group-item bg-secondary text-white">
-      <a href="players/<%=player.player_id%>" class="list-group-item list-group-item-action text-white bg-secondary my-1 rounded"><%=player.name%></a>
+    <li class="list-group-item bg-secondary">
+      <a href="players/<%=player.player_id%>" class="list-group-item bg-secondary text-white my-2 rounded"><%=player.name%></a>
     </li>
     <% }) %>
   </ul>

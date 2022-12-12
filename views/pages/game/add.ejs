@@ -1,10 +1,11 @@
 <%- layout('layouts/boilerplate') %>
 
 <form action="/games/add" method="post" novalidate onsubmit="return validateFormGame()">
-  <div class="card bg-secondary text-white" style="width: 100%">
+  <div class="card bg-secondary" style="width: 100%">
     <div class="card-body">
       <h1 class="card-title">Add game</h1>
     </div>
+
     <ul class="list-group list-group-flush">
       <li class="list-group-item bg-secondary text-white">
         <label for="input-name">Name:</label>
@@ -24,6 +25,7 @@
         <p class="text-danger" id="p-error-team-size"></p>
       </li>
     </ul>
+
     <div class="card-body d-flex">
       <button class="btn btn-success my-2" type="submit">Submit</button>
     </div>

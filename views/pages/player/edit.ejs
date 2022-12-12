@@ -2,7 +2,7 @@
 
 <% if (player !== undefined) { %>
 <form action="/players/<%=player.player_id%>/edit" method="post" novalidate onsubmit="return validateFormPlayer()">
-  <div class="card bg-secondary text-white mb-2" style="width: 100%">
+  <div class="card bg-secondary text-white" style="width: 100%">
     <ul class="list-group list-group-flush">
       <li class="list-group-item bg-secondary text-white">
         <label for="input-name">Name:</label>
@@ -15,37 +15,37 @@
         <input class="form-control my-2" id="input-email" type="text" name="email" value="<%=player.email%>" />
         <p class="text-danger" id="p-error-email"></p>
       </li>
-    </ul>
 
-    <ul class="list-group list-group-flush">
-      <ul class="list-group-item bg-secondary text-white">
-        <p>Game specialisations:</p>
-        <% if (games.length > 0) { %>
-        <% for (let i = 0; i < games.length; i++)  { %>
-        <% let addChecked = false; %>
+      <div class="list-group list-group-flush">
+        <ul class="list-group-item bg-secondary text-white">
+          <p>Game specialisations:</p>
+          <% if (games.length > 0) { %>
+          <% for (let i = 0; i < games.length; i++)  { %>
+          <% let addChecked = false; %>
 
-        <% if (gamespecialisations !== undefined) { %>
-        <% for (let k = 0; k < gamespecialisations.length; k++) { %>
-        <% if (games[i].game_id === gamespecialisations[k].game_id) { %>
-        <% addChecked = true; %>
-        <% } %>
-        <% } %>
-        <% } %>
+          <% if (gamespecialisations !== undefined) { %>
+          <% for (let k = 0; k < gamespecialisations.length; k++) { %>
+          <% if (games[i].game_id === gamespecialisations[k].game_id) { %>
+          <% addChecked = true; %>
+          <% } %>
+          <% } %>
+          <% } %>
 
-        <label class="list-group-item d-flex gap-2 bg-secondary text-white">
-          <input class="form-check-input flex-shrink-0" type="checkbox" name="game_id" id="<%= games[i].game_id %>" value="<%= games[i].game_id %>" <% if (addChecked) { %> checked <% addChecked = false; %> <% } %>>
-          <span>
-            <%= games[i].name %>
-          </span>
-        </label>
+          <label class="list-group-item d-flex gap-2 bg-secondary text-white">
+            <input class="form-check-input flex-shrink-0" type="checkbox" name="game_id" id="<%= games[i].game_id %>" value="<%= games[i].game_id %>" <% if (addChecked) { %> checked <% addChecked = false; %> <% } %>>
+            <span>
+              <%= games[i].name %>
+            </span>
+          </label>
 
-        <% } %>
-        <% } else { %>
-        <li class="list-group-item bg-secondary text-white">There are currently no games, add them on the
-          <a href="/games">games</a> page.
-        </li>
-        <% } %>
-      </ul>
+          <% } %>
+          <% } else { %>
+          <li class="list-group-item bg-secondary text-white">There are currently no games, add them on the
+            <a href="/games">games</a> page.
+          </li>
+          <% } %>
+        </ul>
+      </div>
     </ul>
     <div class="card-body d-flex">
       <button class="btn btn-success my-2" type="submit">Submit</button>
@@ -53,10 +53,13 @@
   </div>
 </form>
 <% } else { %>
-<div class="card bg-secondary text-white mb-2" style="width: 100%">
+<div class="card bg-secondary" style="width: 100%">
+  <div class="card-body">
+    <h1>Error</h1>
+  </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item bg-secondary text-white">
-      <p>There is no player with an id of "<%=id%>"</p>
+      <p class="list-group-item bg-secondary text-white my-1 rounded">There is no player with an id of "<%=id%>"</p>
     </li>
   </ul>
 </div>
