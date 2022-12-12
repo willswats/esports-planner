@@ -6,8 +6,7 @@
 
 - [ ] Refactor player controller
 - [ ] Test without database connection
-- [ ] Move from ejs or make it reuseable
-- [ ] Move from bootstrap
+- [ ] Make ejs reuseable
 
 ## Medium Priority
 
