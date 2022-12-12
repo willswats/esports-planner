@@ -108,7 +108,7 @@ export const getShowPlayer = (req, res) => {
       }
       res.render('pages/player/show', {
         id,
-        title: result !== undefined ? result[0].name : 'Error',
+        title: result[0][0].name,
         player: result[0][0],
         gamespecialisations: result[1],
         games: result[2],
@@ -140,7 +140,7 @@ export const getEditPlayer = (req, res) => {
       }
       res.render('pages/player/edit', {
         id,
-        title: result.length > 0 ? result[0].name : 'Error',
+        title: result[0][0].name,
         player: result[0][0],
         gamespecialisations: result[1],
         games: result[2],
