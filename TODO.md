@@ -15,5 +15,3 @@
 - [ ] Add pageination
 
 ## Low Priority
-
-- [ ] Setup dotenv for `config.js`
