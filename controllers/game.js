@@ -1,4 +1,5 @@
 import pool from '../data/config.js';
+import { sortArrayByPropertyAlphabetically } from '../utils/sortArrayByPropertyAlphabetically.js';
 
 export const getIndexGame = (req, res) => {
   pool.query(
@@ -10,9 +11,11 @@ export const getIndexGame = (req, res) => {
       if (error) {
         req.flash('error', 'Something went wrong');
       }
+      const sortedResult = sortArrayByPropertyAlphabetically(result);
+
       res.render('pages/game/index', {
         title: 'Games',
-        games: result,
+        games: sortedResult,
         success: req.flash('success'),
         error: req.flash('error'),
       });

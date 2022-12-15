@@ -2,16 +2,21 @@
 
 ## In Progress
 
+- [ ] Complete teams:
+  - [ ] Views
+  - [ ] Routes
+  - [ ] Controllers
+  - [ ] Validation
+
 ## High Priority
 
-- [ ] Refactor player controller
-- [ ] Test without database connection
+- [ ] Add active to current nav link
+- [ ] Cleanup controllers
 - [ ] Make ejs reuseable
+- [ ] Test without database connection
 
 ## Medium Priority
 
-- [ ] Complete views, routes and controllers for teams
-- [ ] Sort from a to z
 - [ ] Add pageination
 
 ## Low Priority

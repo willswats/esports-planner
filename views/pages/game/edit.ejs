@@ -7,14 +7,22 @@
   <div class="card bg-secondary" style="width: 100%">
     <ul class="list-group list-group-flush">
       <li class="list-group-item bg-secondary text-white">
+        <a href="/games/<%=game.game_id%>"><img src="/assets/arrow-left.svg" /></a>
+      </li>
+
+      <li class="list-group-item bg-secondary text-white">
+        <h1>Edit Game</h1>
+      </li>
+
+      <li class="list-group-item bg-secondary text-white">
         <label for="input-name">Name:</label>
-        <input class="form-control my-2" id="input-name" type="text" name="name" value="<%=game.name%>" />
+        <input class="form-control" id="input-name" type="text" name="name" value="<%=game.name%>" />
         <p class="text-danger" id="p-error-name"></p>
       </li>
 
       <li class="list-group-item bg-secondary text-white">
         <label for="input-duration">Duration:</label>
-        <input class="form-control my-2" id="input-duration" type="number" name="duration" value="<%=game.duration%>" />
+        <input class="form-control" id="input-duration" type="number" name="duration" value="<%=game.duration%>" />
         <p class="text-danger" id="p-error-duration"></p>
       </li>
 
@@ -25,18 +33,18 @@
       </li>
     </ul>
     <div class="card-body d-flex">
-      <button class="btn btn-success my-2" type="submit">Submit</button>
+      <button class="btn btn-success" type="submit">Submit</button>
     </div>
   </div>
 </form>
 <% } else { %>
 <div class="card bg-secondary" style="width: 100%">
-  <div class="card-body">
-    <h1>Error</h1>
-  </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item bg-secondary text-white">
-      <p class="list-group-item bg-secondary text-white my-1 rounded">There is no game with an id of "<%=id%>"</p>
+      <h1>Error</h1>
+    </li>
+    <li class="list-group-item bg-secondary text-white">
+      There is no game with an id of "<%=id%>"
     </li>
   </ul>
 </div>

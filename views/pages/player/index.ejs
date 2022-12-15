@@ -1,17 +1,15 @@
 <%- layout('layouts/boilerplate') %>
 
 <div class="card bg-secondary text-white" style="width: 100%">
-  <div class="card-body">
-    <h1 class="card-title">Players</h1>
-    <a class="btn btn-primary my-2" href="players/add">Add player</a>
-  </div>
-  <% if (players !== undefined) { %>
   <ul class="list-group list-group-flush">
-    <% players.map((player) => { %>
-    <li class="list-group-item bg-secondary">
-      <a href="players/<%=player.player_id%>" class="list-group-item bg-secondary text-white my-2 rounded"><%=player.name%></a>
+    <li class="list-group-item bg-secondary text-white">
+      <h1>Players</h1>
+      <a class="btn btn-primary" href="players/add">Add player</a>
     </li>
+    <% if (players !== undefined) { %>
+    <% players.map((player) => { %>
+    <a class="list-group-item list-group-item-active bg-secondary" href="players/<%=player.player_id%>"><%=player.name%></a>
     <% }) %>
+    <% } %>
   </ul>
-  <% } %>
 </div>

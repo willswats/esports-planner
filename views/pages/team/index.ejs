@@ -1,0 +1,15 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="card bg-secondary" style="width: 100%">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item bg-secondary text-white">
+      <h1 class="card-title">Teams</h1>
+      <a class="btn btn-primary" href="teams/add">Add Team</a>
+    </li>
+    <% if (teams !== undefined) { %>
+    <% teams.map((team) => { %>
+    <a class="list-group-item list-group-item-active bg-secondary" href="teams/<%=team.team_id%>"><%=team.name%></a>
+    <% }) %>
+  </ul>
+  <% } %>
+</div>

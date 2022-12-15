@@ -2,11 +2,15 @@
 
 <form action="/players/add" method="post" novalidate onsubmit="return validateFormPlayer()">
   <div class="card bg-secondary" style="width: 100%">
-    <div class="card-body">
-      <h1 class="card-title">Add player</h1>
-    </div>
-
     <ul class="list-group list-group-flush">
+      <li class="list-group-item bg-secondary text-white">
+        <a href="/players"><img src="/assets/arrow-left.svg" /></a>
+      </li>
+
+      <li class="list-group-item bg-secondary text-white">
+        <h1>Add Player</h1>
+      </li>
+
       <li class="list-group-item bg-secondary text-white">
         <label for="input-name">Name:</label>
         <input class="form-control my-2" id="input-name" type="text" name="name" />
@@ -20,24 +24,22 @@
       </li>
     </ul>
 
-    <div class="list-group list-group-flush">
-      <ul class="list-group-item bg-secondary text-white">
-        <p>Game specialisations:</p>
-        <% if (games.length > 0) { %>
-        <% games.map((game) => { %>
-        <label class="list-group-item d-flex gap-2 bg-secondary text-white" for="<%= game.game_id %>">
-          <input class="form-check-input flex-shrink-0" type="checkbox" name="game_id" id="<%= game.game_id %>" value="<%= game.game_id %>" />
-          <span> <%= game.name %> </span>
+    <li class="list-group-item bg-secondary text-white">
+      Specialisations:
+      <% if (games.length > 0) { %>
+      <% games.map((game) => { %>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="game_id" id="<%= game.game_id %>" value="<%= game.game_id %>" for="<%= game.game_id %>">
+        <label class="form-check-label" for="<%= game.game_id %>">
+          <%= game.name %>
         </label>
-        <% }) %>
-        <% } else { %>
-        <li class="list-group-item bg-secondary text-white">
-          There are currently no games, add them on the
-          <a href="/games">games</a> page.
-        </li>
-        <% } %>
-      </ul>
-    </div>
+      </div>
+      <% }) %>
+      <% } else { %>
+      There are currently no games, add them on the
+      <a href="/games">games</a> page.
+      <% } %>
+    </li>
 
     <div class="card-body d-flex">
       <button class="btn btn-success my-2" type="submit">Submit</button>

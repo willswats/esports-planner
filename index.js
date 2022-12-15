@@ -8,10 +8,19 @@ import flash from 'connect-flash';
 
 import gameRoutes from './routes/game.js';
 import playerRoutes from './routes/player.js';
+import teamRoutes from './routes/team.js';
 
 const port = 3000;
 const app = express();
 const __filename = url.fileURLToPath(import.meta.url);
+
+// Setup url for ejs
+app.use((req, res, next) => {
+  res.locals.url = req.originalUrl;
+  res.locals.host = req.get('host');
+  res.locals.protocol = req.protocol;
+  next();
+});
 
 // Setup session and flash
 app.use(
@@ -55,6 +64,7 @@ app.get('/', (req, res) => {
 });
 app.use('/games', gameRoutes);
 app.use('/players', playerRoutes);
+app.use('/teams', teamRoutes);
 app.get('*', (req, res) => {
   res.render('pages/404', {
     title: '404 - Page not found',

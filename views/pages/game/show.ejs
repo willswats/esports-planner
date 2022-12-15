@@ -4,24 +4,24 @@
 <div class="card bg-secondary" style="width: 100%">
   <ul class="list-group list-group-flush">
     <li class="list-group-item bg-secondary text-white">
-      <p>Name:</p>
-      <p class="list-group-item bg-secondary text-white my-2 rounded">
-        <%= game.name %>
-      </p>
+      <a href="/games"><img src="/assets/arrow-left.svg" /></a>
     </li>
 
     <li class="list-group-item bg-secondary text-white">
-      <p>Duration:</p>
-      <p class="list-group-item bg-secondary text-white my-2 rounded">
-        <%=game.duration%>
-      </p>
+      <h1>Game</h1>
     </li>
 
     <li class="list-group-item bg-secondary text-white">
-      <p>Team size:</p>
-      <p class="list-group-item bg-secondary text-white my-2 rounded">
-        <%=game.team_size%>
-      </p>
+      Name: <%= game.name %>
+    </li>
+
+
+    <li class="list-group-item bg-secondary text-white">
+      Duration: <%=game.duration%>
+    </li>
+
+    <li class="list-group-item bg-secondary text-white">
+      Team size: <%=game.team_size%>
     </li>
   </ul>
 
@@ -34,12 +34,12 @@
 </div>
 <% } else { %>
 <div class="card bg-secondary" style="width: 100%">
-  <div class="card-body">
-    <h1>Error</h1>
-  </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item bg-secondary text-white">
-      <p class="list-group-item bg-secondary text-white my-1 rounded">There is no game with an id of "<%=id%>"</p>
+      <h1>Error</h1>
+    </li>
+    <li class="list-group-item bg-secondary text-white">
+      There is no game with an id of "<%=id%>"
     </li>
   </ul>
 </div>

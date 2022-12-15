@@ -9,6 +9,7 @@ An application for planning Esports, built with Node.js, Express, and MySQL.
   - [MySQL Server](#mysql-server)
     - [Podman](#podman)
     - [Docker](#docker)
+- [Acknowledgements](#acknowledgements)
 
 ## General Information
 
@@ -60,3 +61,7 @@ To execute SQL queries on the node-esports database, you must `USE` it:
 ```bash
 USE node-esports
 ```
+
+## Acknowledgements
+
+The SVG icons are from [feather](https://github.com/feathericons/feather).

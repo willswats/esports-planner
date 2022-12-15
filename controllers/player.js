@@ -1,4 +1,6 @@
 import pool from '../data/config.js';
+import { convertToInsertableArray } from '../utils/convertToInsertableArray.js';
+import { sortArrayByPropertyAlphabetically } from '../utils/sortArrayByPropertyAlphabetically.js';
 
 export const getIndexPlayer = (req, res) => {
   pool.query(
@@ -10,9 +12,11 @@ export const getIndexPlayer = (req, res) => {
       if (error) {
         req.flash('error', 'Something went wrong');
       }
+      const sortedResult = sortArrayByPropertyAlphabetically(result);
+
       res.render('pages/player/index', {
         title: 'Players',
-        players: result,
+        players: sortedResult,
         success: req.flash('success'),
         error: req.flash('error'),
       });
@@ -39,8 +43,7 @@ export const getAddPlayer = (req, res) => {
 };
 
 export const postAddPlayer = (req, res) => {
-  const { name, email } = req.body;
-  let { game_id } = req.body;
+  const { name, email, game_id } = req.body;
 
   pool.query(
     `
@@ -55,16 +58,10 @@ export const postAddPlayer = (req, res) => {
       if (error) {
         req.flash('error', 'Something went wrong');
       } else {
-        let gameIdsInsert = [];
-
-        // If game_id is not an array, insert it's value into an array
-        if (typeof game_id !== 'object') {
-          game_id = [game_id];
-        }
-
-        for (let i = 0; i < game_id.length; i++) {
-          gameIdsInsert.push([result.insertId, game_id[i]]);
-        }
+        const gameIdsInsert = convertToInsertableArray(
+          result.insertId,
+          game_id
+        );
 
         pool.query(
           `
@@ -151,21 +148,12 @@ export const getEditPlayer = (req, res) => {
 
 export const postEditPlayer = (req, res) => {
   const { id } = req.params;
-  const { name, email } = req.body;
-  let { game_id } = req.body;
+  const { name, email, game_id } = req.body;
 
-  let gameIdsInsert = [];
+  // If games are selected
+  if (game_id !== undefined) {
+    const gameIdsInsert = convertToInsertableArray(id, game_id);
 
-  // If game_id is not an array, insert it's value into an array
-  if (typeof game_id !== 'object') {
-    game_id = [game_id];
-  }
-
-  for (let i = 0; i < game_id.length; i++) {
-    gameIdsInsert.push([id, game_id[i]]);
-  }
-
-  if (game_id[0] !== undefined) {
     pool.query(
       `
     UPDATE player 
@@ -189,6 +177,7 @@ export const postEditPlayer = (req, res) => {
       }
     );
   } else {
+    // If no games are selected
     pool.query(
       `
     UPDATE player 
