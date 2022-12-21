@@ -1,3 +1,3 @@
 <li class="nav-item">
-  <a class="nav-link <% if (url === itemUrl) { %> active <% } %>" href="<%= itemUrl %>"><%= itemName %></a>
+  <a class="nav-link <% if (url.split("/")[1] === itemUrl) { %> active <% } %>" href="/<%= itemUrl %>"><%= itemName %></a>
 </li>
