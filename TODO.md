@@ -10,9 +10,8 @@
 
 ## High Priority
 
-- [ ] Add active to current nav link
-- [ ] Cleanup controllers
 - [ ] Make ejs reuseable
+- [ ] Cleanup controllers
 - [ ] Test without database connection
 
 ## Medium Priority
