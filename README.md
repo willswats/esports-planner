@@ -7,13 +7,12 @@ An application for planning Esports, built with Node.js, Express, and MySQL.
 - [General Information](#general-information)
 - [Setup](#setup)
   - [MySQL Server](#mysql-server)
-    - [Podman](#podman)
     - [Docker](#docker)
 - [Acknowledgements](#acknowledgements)
 
 ## General Information
 
-I built this project for an assignment, furthermore, it has consolidated my knowledge on Node.js, Express, and SQL.
+I built this project for an assignment, furthermore, it has improved my knowledge of; Node.js, Express, and MySQL.
 
 ## Setup
 
@@ -23,16 +22,6 @@ I built this project for an assignment, furthermore, it has consolidated my know
 4. Run `npm start`.
 
 ### MySQL Server
-
-#### Podman
-
-Run this command to alias docker to podman:
-
-```bash
-alias docker="podman"
-```
-
-You can now follow the [Docker](#docker) instructions.
 
 #### Docker
 
