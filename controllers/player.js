@@ -64,6 +64,7 @@ export const postAddPlayer = (req, res) => {
       if (error) {
         req.flash('error', 'Failed to add player');
       } else {
+        req.flash('success', 'Added player');
         const gameIdsInsert = convertToInsertableArray(
           result.insertId,
           game_id
