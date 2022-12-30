@@ -14,6 +14,7 @@
   - [ ] Controllers
   - [ ] Validation
 - [ ] Make ejs reuseable
+- [ ] Cleanup controllers
 
 ## Low Priority
 

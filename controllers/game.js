@@ -2,6 +2,8 @@ import pool from '../data/config.js';
 import { sortArrayByPropertyAlphabetically } from '../utils/sortArrayByPropertyAlphabetically.js';
 
 export const getIndexGame = (req, res) => {
+  let games = [];
+
   pool.query(
     `
   SELECT * 
@@ -9,13 +11,14 @@ export const getIndexGame = (req, res) => {
   `,
     (error, result) => {
       if (error) {
-        req.flash('error', 'Something went wrong');
+        req.flash('error', 'Failed to get games');
+      } else {
+        games = sortArrayByPropertyAlphabetically(result);
       }
-      const sortedResult = sortArrayByPropertyAlphabetically(result);
 
       res.render('pages/game/index', {
         title: 'Games',
-        games: sortedResult,
+        games,
         success: req.flash('success'),
         error: req.flash('error'),
       });
@@ -44,7 +47,7 @@ export const postAddGame = (req, res) => {
     },
     (error) => {
       if (error) {
-        req.flash('error', 'Something went wrong');
+        req.flash('error', 'Failed to add game');
       } else {
         req.flash('success', 'Added game');
       }
@@ -65,16 +68,15 @@ export const getShowGame = (req, res) => {
     id,
     (error, result) => {
       if (error) {
-        req.flash('error', 'Something went wrong');
+        req.flash('error', 'Failed to display show page for game');
+        res.redirect('/games');
+      } else {
+        res.render('pages/game/show', {
+          id,
+          title: result[0].name,
+          game: result[0],
+        });
       }
-
-      res.render('pages/game/show', {
-        id,
-        title: result.length > 0 ? result[0].name : 'Error',
-        game: result[0],
-        success: req.flash('success'),
-        error: req.flash('error'),
-      });
     }
   );
 };
@@ -91,13 +93,15 @@ export const getEditGame = (req, res) => {
     id,
     (error, result) => {
       if (error) {
-        req.flash('error', 'Something went wrong');
+        req.flash('error', 'Failed to display edit page for game');
+        res.redirect('/games');
+      } else {
+        res.render('pages/game/edit', {
+          id,
+          title: result[0].name,
+          game: result[0],
+        });
       }
-      res.render('pages/game/edit', {
-        id,
-        title: result.length > 0 ? result[0].name : 'Error',
-        game: result[0],
-      });
     }
   );
 };
@@ -115,7 +119,7 @@ export const postEditGame = (req, res) => {
     [{ name, duration, team_size }, id],
     (error) => {
       if (error) {
-        req.flash('error', 'Something went wrong');
+        req.flash('error', 'Failed to edit game');
       } else {
         req.flash('success', 'Edited game');
       }
@@ -135,7 +139,7 @@ export const postDeleteGame = (req, res) => {
     id,
     (error) => {
       if (error) {
-        req.flash('error', 'Something went wrong');
+        req.flash('error', 'Failed to delete game');
       } else {
         req.flash('success', 'Deleted game');
       }
