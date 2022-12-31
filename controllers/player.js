@@ -35,8 +35,8 @@ export const getAddPlayer = (req, res) => {
     SELECT *
     FROM game
     `,
-    (_, result) => {
-      if (result !== undefined) {
+    (error, result) => {
+      if (!error) {
         games = result;
       }
 
@@ -77,10 +77,11 @@ export const postAddPlayer = (req, res) => {
           VALUES ?
           `,
           [gameIdsInsert],
-          (error) => {
+          (error, result) => {
             if (error) {
-              req.flash('error', 'Something went wrong');
+              req.flash('error', 'Failed to add player');
             } else {
+              console.log(result);
               req.flash('success', 'Added player');
             }
           }
@@ -117,6 +118,8 @@ export const getShowPlayer = (req, res) => {
           player: result[0][0],
           gamespecialisations: result[1],
           games: result[2],
+          success: req.flash('success'),
+          error: req.flash('error'),
         });
       }
     }

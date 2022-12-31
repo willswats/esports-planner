@@ -75,6 +75,8 @@ export const getShowGame = (req, res) => {
           id,
           title: result[0].name,
           game: result[0],
+          success: req.flash('success'),
+          error: req.flash('error'),
         });
       }
     }

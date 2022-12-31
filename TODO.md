@@ -4,8 +4,6 @@
 
 ## High Priority
 
-- [ ] Test without database connection
-
 ## Medium Priority
 
 - [ ] Complete teams:
@@ -13,9 +11,10 @@
   - [ ] Routes
   - [ ] Controllers
   - [ ] Validation
-- [ ] Make ejs reuseable
 - [ ] Cleanup controllers
+- [ ] Make ejs reuseable
 
 ## Low Priority
 
 - [ ] Add pageination
+- [ ] Add dotenv
