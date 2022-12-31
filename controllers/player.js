@@ -37,7 +37,7 @@ export const getAddPlayer = (req, res) => {
     `,
     (error, result) => {
       if (!error) {
-        games = result;
+        games = sortArrayByPropertyAlphabetically(result);
       }
 
       res.render('pages/player/add', {
@@ -117,7 +117,7 @@ export const getShowPlayer = (req, res) => {
           title: result[0][0].name,
           player: result[0][0],
           gamespecialisations: result[1],
-          games: result[2],
+          games: sortArrayByPropertyAlphabetically(result[2]),
           success: req.flash('success'),
           error: req.flash('error'),
         });
@@ -151,7 +151,7 @@ export const getEditPlayer = (req, res) => {
           title: result[0][0].name,
           player: result[0][0],
           gamespecialisations: result[1],
-          games: result[2],
+          games: sortArrayByPropertyAlphabetically(result[2]),
         });
       }
     }
