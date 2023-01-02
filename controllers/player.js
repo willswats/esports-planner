@@ -77,11 +77,10 @@ export const postAddPlayer = (req, res) => {
           VALUES ?
           `,
           [gameIdsInsert],
-          (error, result) => {
+          (error) => {
             if (error) {
               req.flash('error', 'Failed to add player');
             } else {
-              console.log(result);
               req.flash('success', 'Added player');
             }
           }
