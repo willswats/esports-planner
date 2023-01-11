@@ -199,7 +199,6 @@ export const postEditPlayer = (req, res) => {
       [{ name, email }, id, id],
       (error) => {
         if (error) {
-          console.log(error);
           req.flash('error', 'Failed to edit player');
         } else {
           req.flash('success', 'Edited player');

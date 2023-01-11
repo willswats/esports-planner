@@ -1,6 +1,5 @@
 <%- layout('layouts/boilerplate') %>
 
-<!-- prettier-ignore -->
 <% if (game !== undefined) { %>
 
 <form action="/games/<%=game.game_id%>/edit" method="post" novalidate onsubmit="return validateFormGame()">
