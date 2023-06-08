@@ -1,6 +1,6 @@
 # Esports Planner <!-- omit in toc -->
 
-An application for planning Esports, built with Node.js, Express, and MySQL.
+An application for planning Esports.
 
 ## Table of Contents <!-- omit in toc -->
 
